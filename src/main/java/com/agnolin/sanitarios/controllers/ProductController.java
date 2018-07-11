@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.agnolin.sanitarios.dto.ProductDto;
-import com.agnolin.sanitrarios.interfaces.IService;
+import com.agnolin.sanitarios.interfaces.IService;
 
 
 

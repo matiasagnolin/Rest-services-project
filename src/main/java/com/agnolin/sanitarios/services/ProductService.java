@@ -5,9 +5,9 @@ package com.agnolin.sanitarios.services;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.agnolin.sanitarios.dto.ProductDto;
+import com.agnolin.sanitarios.interfaces.IRepository;
+import com.agnolin.sanitarios.interfaces.IService;
 import com.agnolin.sanitarios.model.Product;
-import com.agnolin.sanitrarios.interfaces.IRepository;
-import com.agnolin.sanitrarios.interfaces.IService;
 
 
 public class ProductService implements IService<Product> {
