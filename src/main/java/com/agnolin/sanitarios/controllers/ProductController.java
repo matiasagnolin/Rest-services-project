@@ -40,5 +40,11 @@ public class ProductController implements Serializable{
     @ResponseStatus(value = HttpStatus.OK) 
     public void update(@RequestBody ProductDto productDto) { 
        service.update(productDto); 
-    } 	
+    }
+	
+	@RequestMapping(value = "/",method = RequestMethod.POST) 
+    @ResponseStatus(value = HttpStatus.CREATED) 
+    public void test() { 
+		 System.out.println("debug here !!!"); 
+    }
 }
