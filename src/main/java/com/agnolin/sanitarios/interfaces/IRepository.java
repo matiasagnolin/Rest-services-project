@@ -19,6 +19,8 @@ public interface IRepository<T extends Serializable> {
    public void deleteById(final long entityId );
 
    public void setClazz(Class<T> clazz);
+   
+   
 
 	
 }

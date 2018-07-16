@@ -2,7 +2,9 @@ package com.agnolin.sanitarios.dto;
 
 import java.io.Serializable;
 
-public class ProductDto implements Serializable {
+import com.agnolin.sanitarios.model.Product;
+
+public class ProductDto extends Product implements Serializable  {
 
 	/**
 	 * 

@@ -8,7 +8,7 @@
       http://www.springframework.org/schema/context 
       http://www.springframework.org/schema/context/spring-context-4.1.xsd">
  
-   <context:property-placeholder location="classpath:persistence.properties" />
+   
    
    <bean id="dataSource"
     class="org.apache.tomcat.dbcp.dbcp.BasicDataSource">
@@ -30,7 +30,7 @@
       </property>
    </bean>	
    
-   <bean id="AbstractHibernateDao" class="com.agnolin.sanitarios.repository.AbstractHibernateDao" abstract="true"
+   <bean id="AbstractHibernateDao" class="com.agnolin.sanitarios.repository.AbstractHibernateDao" abstract="true">
    	<property name="sessionFactory" ref="sessionFactory" />
    </bean>
    
@@ -39,17 +39,30 @@
       <property name="sessionFactory" ref="sessionFactory" />
    </bean>
    
-   <bean id="GenericHibernateDao" class="com.agnolin.sanitarios.repository.GenericHibernateDao" parent="AbstractHibernateDao"
+   <bean id="GenericHibernateDao" class="com.agnolin.sanitarios.repository.GenericHibernateDao" parent="AbstractHibernateDao">
   
    </bean>
    
-   	<bean id="ProductService" class="com.agnolin.sanitarios.services.ProductService"
- 		<property name="productRepository" ref="GenericHibernateDao"/> 
+   <bean id="ProductDao" class="com.agnolin.sanitarios.repository.GenericHibernateDao">
+        <constructor-arg>
+            <value>com.agnolin.sanitarios.Product</value>
+        </constructor-arg>
+        
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+	</bean>
+   
+   	<bean id="ProductService" class="com.agnolin.sanitarios.services.ProductService">
+ 		<property name="productRepository" ref="ProductDao"/> 
  	</bean>
    
    <bean id="persistenceExceptionTranslationPostProcessor"
     class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
  	
+ 	<bean id="ProductController" class="com.agnolin.sanitarios.controllers.ProductController">
+ 		<property name="service" ref="ProductService"/> 
+ 	</bean>
    
 </beans>
    
