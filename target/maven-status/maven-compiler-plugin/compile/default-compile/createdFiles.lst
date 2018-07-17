@@ -1,4 +1,5 @@
 com\agnolin\sanitarios\DAOs\ProductDAO.class
+com\agnolin\sanitarios\config\BeanConfig.class
 com\agnolin\sanitarios\controllers\UserController.class
 com\agnolin\sanitarios\DAOs\SellDetailDAO.class
 com\agnolin\sanitarios\model\Sale.class
@@ -7,6 +8,7 @@ com\agnolin\sanitarios\DAOs\CategoriesMapper.class
 com\agnolin\sanitarios\repository\AbstractHibernateDao.class
 com\agnolin\sanitarios\DAOs\UserDAO.class
 com\agnolin\sanitarios\model\Product.class
+com\agnolin\sanitarios\config\SecurityConfig.class
 com\agnolin\sanitarios\DAOs\SellDAO.class
 com\agnolin\sanitarios\dto\ProductDto.class
 com\agnolin\sanitarios\services\ProductService.class

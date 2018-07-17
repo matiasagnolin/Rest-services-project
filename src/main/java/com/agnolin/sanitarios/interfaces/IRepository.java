@@ -3,6 +3,8 @@ package com.agnolin.sanitarios.interfaces;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 
 public interface IRepository<T extends Serializable> {
 	
@@ -20,6 +22,7 @@ public interface IRepository<T extends Serializable> {
 
    public void setClazz(Class<T> clazz);
    
+   public EntityManager getEm();
    
 
 	

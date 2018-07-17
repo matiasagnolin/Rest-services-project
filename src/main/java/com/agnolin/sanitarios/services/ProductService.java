@@ -8,26 +8,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.agnolin.sanitarios.dto.ProductDto;
+
 import com.agnolin.sanitarios.interfaces.IRepository;
 import com.agnolin.sanitarios.interfaces.IService;
 import com.agnolin.sanitarios.model.Product;
 
 @Component("ProductService")
 @Service
-public class ProductService implements IService<ProductDto> {
+public class ProductService implements IService<Product> {
 	
 	
 	private IRepository<Product> productRepository;
 	
 	
-	public void create(ProductDto productDto){
-		productRepository.create(productDto);
+	
+	public void create(Product product){
+		productRepository.create(product);
+		
 	}
 
 
-	public void update(ProductDto productDto) {
-		productRepository.update(productDto);	
+	public void update(Product product) {
+		productRepository.update(product);	
 	}
 	
 
@@ -44,9 +46,9 @@ public class ProductService implements IService<ProductDto> {
 
 
 	@Override
-	public List<ProductDto> getAll() {
+	public List<Product> getAll() {
 		List<Product> list = this.productRepository.findAll();
-		return null;
+		return list;
 	}
 
 	

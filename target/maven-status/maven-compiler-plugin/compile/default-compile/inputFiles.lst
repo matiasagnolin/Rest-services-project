@@ -1,8 +1,10 @@
 C:\Users\MANGOLIN\workspace\Rest-services-project\src\main\java\com\agnolin\sanitarios\controllers\ProductController.java
 C:\Users\MANGOLIN\workspace\Rest-services-project\src\main\java\com\agnolin\sanitarios\DAOs\ProductDAO.java
+C:\Users\MANGOLIN\workspace\Rest-services-project\src\main\java\com\agnolin\sanitarios\config\SecurityConfig.java
 C:\Users\MANGOLIN\workspace\Rest-services-project\src\main\java\com\agnolin\sanitarios\controllers\UserController.java
 C:\Users\MANGOLIN\workspace\Rest-services-project\src\main\java\com\agnolin\sanitarios\interfaces\IRepository.java
 C:\Users\MANGOLIN\workspace\Rest-services-project\src\main\java\com\agnolin\sanitarios\model\Categories.java
+C:\Users\MANGOLIN\workspace\Rest-services-project\src\main\java\com\agnolin\sanitarios\config\BeanConfig.java
 C:\Users\MANGOLIN\workspace\Rest-services-project\src\main\java\com\agnolin\sanitarios\DAOs\UserDAO.java
 C:\Users\MANGOLIN\workspace\Rest-services-project\src\main\java\com\agnolin\sanitarios\dto\ProductDto.java
 C:\Users\MANGOLIN\workspace\Rest-services-project\src\main\java\com\agnolin\sanitarios\model\Product.java

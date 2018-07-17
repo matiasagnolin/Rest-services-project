@@ -19,6 +19,7 @@ public class Product implements Serializable {
 	private String name;
 	private Categories category;
 	private double price;
+	
 	public int getProductId() {
 		return productId;
 	}

@@ -3,21 +3,31 @@ package com.agnolin.sanitarios.repository;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 public abstract class AbstractHibernateDao< T extends Serializable > {
 	
-
-	private SessionFactory hibernateFactory;
-
 	
+	 @PersistenceContext
+	 EntityManager em;
+	 
+	 public EntityManager getEm() {
+			return em;
+		}
+	
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 	private Class<T> clazz;
 	
 	private final Session getCurrentSession() {
-	      return hibernateFactory.getCurrentSession();
+	      //return hibernateFactory.getCurrentSession();
+		return em.unwrap(SessionFactory.class).getCurrentSession();
 	   }
 	public final void setClazz( Class< T > clazzToSet ){
 	      this.clazz = clazzToSet;
@@ -31,8 +41,10 @@ public abstract class AbstractHibernateDao< T extends Serializable > {
 	      return getCurrentSession().createQuery( "from " + clazz.getName() ).list();
 	   }
 	 
+	   @Transactional
 	   public void create( T entity ){
-	      getCurrentSession().persist( entity );
+	     // getCurrentSession().persist( entity );
+		   em.persist(entity);
 	   }
 	 
 	   public void update( T entity ){
@@ -41,19 +53,20 @@ public abstract class AbstractHibernateDao< T extends Serializable > {
 	 
 	   public void delete( T entity ){
 	      getCurrentSession().delete( entity );
+	      
 	   }
 	   public void deleteById( long entityId ) {
 	      T entity = findOne( entityId );
 	      delete( entity );
 	   }
 	   
-	   @Autowired
-	   public void SomeService(EntityManagerFactory factory) {
-	     if(factory.unwrap(SessionFactory.class) == null){
-	       throw new NullPointerException("factory is not a hibernate factory");
-	     }
-	     this.hibernateFactory = factory.unwrap(SessionFactory.class);
-	   }
+//	   @Autowired
+//	   public void setSessionFactory(EntityManagerFactory factory) {
+//	     if(factory.unwrap(SessionFactory.class) == null){
+//	       throw new NullPointerException("factory is not a hibernate factory");
+//	     }
+//	     this.hibernateFactory = factory.unwrap(SessionFactory.class);
+//	   }
 }
 
 
