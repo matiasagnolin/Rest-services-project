@@ -5,6 +5,7 @@ package com.agnolin.sanitarios.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +14,14 @@ import com.agnolin.sanitarios.interfaces.IRepository;
 import com.agnolin.sanitarios.interfaces.IService;
 import com.agnolin.sanitarios.model.Product;
 
+
 @Component("ProductService")
 @Service
 public class ProductService implements IService<Product> {
 	
 	
 	private IRepository<Product> productRepository;
+
 	
 	
 	
@@ -39,9 +42,10 @@ public class ProductService implements IService<Product> {
 	}
 
 	@Autowired
-	public void setProductRepository(IRepository<Product> productRepository) {
-		this.productRepository = productRepository;
+	public void setProductRepository(IRepository<Product> dao) {
+		this.productRepository=dao;
 		this.productRepository.setClazz(Product.class);
+		this.productRepository.count();
 	}
 
 

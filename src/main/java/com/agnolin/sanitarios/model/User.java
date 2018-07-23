@@ -8,6 +8,9 @@ import javax.persistence.Id;
 
 
 
+
+
+
 @Entity
 public class User implements Serializable {
 
@@ -17,16 +20,25 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
-	private String userId;
+	@GeneratedValue(strategy = javax.persistence.GenerationType.AUTO )
+	private int userId;
+	
 	private String password;
+	
 	private String name;
+	
 	private String lastName;
 	
-	public String getUserId() {
+	public User(String name, String lastname, String password) {
+		this.name=name;
+		this.lastName=lastname;
+		this.password=password;
+	}
+	
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getPassword() {

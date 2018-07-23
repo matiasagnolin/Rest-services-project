@@ -16,6 +16,7 @@
    <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
+    <org.hibernate.version>5.2.0.Final</org.hibernate.version>
   </properties>
   
   <dependencies>
@@ -45,20 +46,23 @@
          <groupId>com.fasterxml.jackson.core</groupId>
          <artifactId>jackson-databind</artifactId>
          </dependency>
+         
+         <dependency>
+		   <groupId>com.fasterxml.jackson.dataformat</groupId>
+		   <artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
         
     <dependency>
    <groupId>org.hibernate</groupId>
    <artifactId>hibernate-core</artifactId>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api -->
 <dependency>
     <groupId>org.hibernate.javax.persistence</groupId>
     <artifactId>hibernate-jpa-2.0-api</artifactId>
     <version>1.0.1.Final</version>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
 <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-entitymanager</artifactId>
@@ -82,10 +86,7 @@
     <groupId>org.springframework</groupId>
     <artifactId>spring-core</artifactId>
    </dependency>
-   <dependency>
-     <groupId>org.springframework</groupId>
-     <artifactId>spring-orm</artifactId>
-	</dependency>
+   
 	
 	 <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -133,24 +134,24 @@
    <artifactId>log4j-jcl</artifactId>
 </dependency>
 
-<!--  <dependency> -->
-<!--  	<groupId>org.springframework.security</groupId> -->
-<!--  	<artifactId>spring-security-core</artifactId> -->
-<!--  	<type>jar</type> -->
-<!--  	<scope>compile</scope> -->
-<!--  </dependency> -->
-<!--  <dependency> -->
-<!--  	<groupId>org.springframework.security</groupId> -->
-<!--  	<artifactId>spring-security-web</artifactId> -->
-<!--  	<type>jar</type> -->
-<!--  	<scope>compile</scope> -->
-<!--  </dependency> -->
-<!--  <dependency> -->
-<!--  	<groupId>org.springframework.security</groupId> -->
-<!--  	<artifactId>spring-security-config</artifactId> -->
-<!--  	<type>jar</type> -->
-<!--  	<scope>compile</scope> -->
-<!--  </dependency> -->
+ <dependency>
+ 	<groupId>org.springframework.security</groupId>
+ 	<artifactId>spring-security-core</artifactId>
+ 	<type>jar</type>
+ 	<scope>compile</scope>
+ </dependency>
+ <dependency>
+ 	<groupId>org.springframework.security</groupId>
+ 	<artifactId>spring-security-web</artifactId>
+ 	<type>jar</type>
+ 	<scope>compile</scope>
+ </dependency>
+ <dependency>
+ 	<groupId>org.springframework.security</groupId>
+ 	<artifactId>spring-security-config</artifactId>
+ 	<type>jar</type>
+ 	<scope>compile</scope>
+ </dependency>
 
 <!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
 <dependency>
@@ -164,6 +165,12 @@
     <artifactId>lombok</artifactId>
     <scope>provided</scope>
 </dependency>
+
+<!--  <dependency> -->
+<!--             <groupId>com.auth0</groupId> -->
+<!--             <artifactId>auth0-spring-security-api</artifactId> -->
+<!--             <version>1.0.0-rc.3</version> -->
+<!-- </dependency> -->
 
 
   

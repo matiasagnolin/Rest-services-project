@@ -24,6 +24,7 @@ public interface IRepository<T extends Serializable> {
    
    public EntityManager getEm();
    
+   public void count();
 
 	
 }

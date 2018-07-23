@@ -31,6 +31,7 @@ public class DTOModelMapper extends RequestResponseBodyMethodProcessor {
 
 	    public DTOModelMapper(ObjectMapper objectMapper, EntityManager entityManager) {
 	        super(Collections.singletonList(new MappingJackson2HttpMessageConverter(objectMapper)));
+	        
 	        this.entityManager = entityManager;
 	    }
 	    

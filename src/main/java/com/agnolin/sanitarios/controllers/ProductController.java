@@ -1,6 +1,7 @@
 package com.agnolin.sanitarios.controllers;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,7 +35,7 @@ public class ProductController implements Serializable{
 	
 	
 	 
-	 @RequestMapping(value = "/New",method = RequestMethod.GET) 
+	 @RequestMapping(value = "/New",method = RequestMethod.POST) 
      @ResponseStatus(value = HttpStatus.CREATED) 
      public void create(@DTO(ProductDto.class) Product product) { 
 		 
@@ -47,11 +48,11 @@ public class ProductController implements Serializable{
        service.update(product); 
     }
 	
-	@RequestMapping(value = "/",method = RequestMethod.POST) 
-    @ResponseStatus(value = HttpStatus.CREATED) 
-    public void test() { 
-		 System.out.println("debug here !!!"); 
-    }
+	@RequestMapping(value = "",method = RequestMethod.POST) 
+    public List<Product> test() {
+
+		return service.getAll();
+	}
 	
 
 	public void setProductService(IService<Product> service) {
