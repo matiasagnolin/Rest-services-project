@@ -8,8 +8,11 @@ public class Categories implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private int categoryId;
+	
 	private int description;
+	
 	public int getCategoryId() {
 		return categoryId;
 	}
