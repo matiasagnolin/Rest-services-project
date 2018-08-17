@@ -15,4 +15,6 @@ public class ProductCreationDto {
 	@NotNull
 	private double price;
 	
+
+	
 }

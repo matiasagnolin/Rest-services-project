@@ -29,22 +29,19 @@ public class UserController {
 	private IService<User> service;
 
 	
-
-
-	 
-	 @RequestMapping(value = "/New",method = RequestMethod.GET) 
+	 @RequestMapping(value = "/New",method = RequestMethod.POST) 
      @ResponseStatus(value = HttpStatus.CREATED) 
      public void create(@DTO(UserDto.class) User user) { 
 		 service.create(user); 
      }
 	 
-	@RequestMapping(value = "/Modify", method = RequestMethod.POST) 
-    @ResponseStatus(value = HttpStatus.OK) 
+	@RequestMapping(value = "/Update", method = RequestMethod.PUT) 
+    @ResponseStatus(value = HttpStatus.OK)
     public void update(@DTO(UserDto.class) User user) { 
        service.update(user); 
     }
 	
-	@RequestMapping(value = "/getAll",method = RequestMethod.GET) 
+	@RequestMapping(value = "/",method = RequestMethod.GET) 
     @ResponseBody 
     public List<User> test() { 
 		 return this.service.getAll(); 

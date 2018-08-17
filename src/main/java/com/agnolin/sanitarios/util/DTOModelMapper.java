@@ -1,5 +1,6 @@
 package com.agnolin.sanitarios.util;
 
+import com.agnolin.sanitarios.dto.ProductDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.core.MethodParameter;
@@ -28,15 +29,17 @@ public class DTOModelMapper extends RequestResponseBodyMethodProcessor {
 	 private static final ModelMapper modelMapper = new ModelMapper();
 
 	    private EntityManager entityManager;
+	    
+	    private ObjectMapper object;
 
 	    public DTOModelMapper(ObjectMapper objectMapper, EntityManager entityManager) {
 	        super(Collections.singletonList(new MappingJackson2HttpMessageConverter(objectMapper)));
-	        
+	        this.object=objectMapper;
 	        this.entityManager = entityManager;
 	    }
 	    
 	    @Override
-	    public boolean supportsParameter(MethodParameter parameter) {
+	    public boolean supportsParameter(MethodParameter parameter) {//1
 	        return parameter.hasParameterAnnotation(DTO.class);
 	    }
 
@@ -46,7 +49,7 @@ public class DTOModelMapper extends RequestResponseBodyMethodProcessor {
 	    }
 
 	    @Override
-	    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+	    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {//2
 	        Object dto = super.resolveArgument(parameter, mavContainer, webRequest, binderFactory);
 	        Object id = getEntityId(dto);
 	        if (id == null) {
@@ -60,10 +63,18 @@ public class DTOModelMapper extends RequestResponseBodyMethodProcessor {
 
 	    @Override
 	    protected Object readWithMessageConverters(HttpInputMessage inputMessage, MethodParameter parameter, Type targetType) throws IOException, HttpMediaTypeNotSupportedException, HttpMessageNotReadableException {
+	    	messageConverters.clear();
+	    	this.messageConverters.stream().forEach((k)->{
+	    		System.out.println(k.canRead(ProductDto.class, inputMessage.getHeaders().getContentType()));
+	    		
+	    	});
+	    	
 	        for (Annotation ann : parameter.getParameterAnnotations()) {
 	            DTO dtoType = AnnotationUtils.getAnnotation(ann, DTO.class);
 	            if (dtoType != null) {
-	                return super.readWithMessageConverters(inputMessage, parameter, dtoType.value());
+	            	ProductDto dto = (ProductDto) super.readWithMessageConverters(inputMessage, parameter, dtoType.value());
+	            	
+	            	return dto;
 	            }
 	        }
 	        throw new RuntimeException();

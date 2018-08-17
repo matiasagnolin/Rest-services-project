@@ -19,6 +19,14 @@
     <org.hibernate.version>5.2.0.Final</org.hibernate.version>
   </properties>
   
+    <repositories>
+        <repository>
+                <id>mercadolibre-snapshots</id>
+                <name>your custom repo</name>
+                <url>https://github.com/mercadolibre/java-sdk-repo/raw/master/snapshots</url>
+        </repository>
+</repositories>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -41,11 +49,11 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
         </dependency>
-            <!-- JSON data binding -->
+<!--             JSON data binding -->
      <dependency>
          <groupId>com.fasterxml.jackson.core</groupId>
          <artifactId>jackson-databind</artifactId>
-         </dependency>
+     </dependency>
          
          <dependency>
 		   <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -172,9 +180,14 @@
 <!--             <version>1.0.0-rc.3</version> -->
 <!-- </dependency> -->
 
-
-  
+	 		<dependency>
+	              <groupId>com.mercadolibre</groupId>
+	              <artifactId>sdk</artifactId>
+	              <version>0.0.2-SNAPSHOT</version>
+	      </dependency>
   </dependencies>
+  
+
   
   	<build>
 		<plugins>
@@ -183,6 +196,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>RestApp</finalName>
 	</build>
   
 
